@@ -1,5 +1,5 @@
 # Landing Page 404
-Mira el demo aqui 🎉 [404](http://https://pages-404.netlify.app/ "404")
+Mira el demo aqui 🎉 [404](https://pages-404.netlify.app/ "404")
 
 ------------
 
