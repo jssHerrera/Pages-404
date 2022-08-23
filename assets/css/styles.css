@@ -1,0 +1,273 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 5.6rem;
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --first-color: hsl(38, 69%, 59%);
+  --text-color: hsl(38, 8%, 8%);
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Space Grotesk", sans-serif;
+  --biggest-font-size: 3.6rem;
+  --normal-font-size: 2.2rem;
+  --smaller-font-size: 1.7rem;
+}
+
+/* Responsive typography */
+@media screen and (min-width: 1024px) {
+  :root {
+    --biggest-font-size: 8rem;
+    --normal-font-size: 1.6rem;
+    --smaller-font-size: 2rem;
+  }
+}
+
+/*=============== BASE ===============*/
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; /* --> 1rem = 10px*/
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: 1.9rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  max-width: 120rem;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.main {
+  overflow: hidden; /* For the animations ScrollReveal */
+}
+
+/*=============== HEADER & NAV ===============*/
+.header {
+  position: fixed;
+  width: 100%;
+  background-color: transparent;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+.nav {
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav__logo,
+.nav-toggle {
+  color: var(--text-color);
+  display: inline-flex;
+}
+.nav__logo {
+  font-weight: 700;
+}
+.nav__toggle {
+  font-size: 2rem;
+  cursor: pointer;
+}
+@media (max-width: 767px) {
+  .nav__menu {
+    position: fixed;
+    background-color: var(--first-color);
+    left: 0;
+    top: -100%;
+    width: 100%;
+    padding: 8rem 0 6.4rem;
+    border-radius: 0 0 2.4rem 2.4rem;
+    box-shadow: 0 2px 4px hsla(38, 4%, 15%, 0.15);
+    transition: 0.4s;
+  }
+}
+.nav__list {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.nav__link {
+  color: var(--text-color);
+}
+.nav__close {
+  position: absolute;
+  top: 1rem;
+  right: 2.4rem;
+  font-size: 2.4rem;
+  color: var(--text-color);
+  cursor: pointer;
+}
+/* Show Menu */
+.show-menu {
+  top: 0;
+}
+/* ======== HOME ======== */
+.home {
+  background-color: var(--first-color);
+  padding: 14rem 0 3.2rem;
+  height: 100vh;
+  display: grid;
+}
+.home__container {
+  display: grid;
+  align-content: center;
+  row-gap: 4rem;
+}
+.home__data {
+  text-align: center;
+}
+.home__subtitle {
+  display: block;
+}
+.home__title {
+  font-size: var(--biggest-font-size);
+  margin: 1.2rem;
+}
+.home__button {
+  margin-top: 3.2rem;
+  display: inline-block;
+  background-color: var(--text-color);
+  color: #fff;
+  padding: 1.2rem 2.4rem;
+  border-radius: 4.8rem;
+  transition: all 0.4s ease;
+}
+.home__button:hover{
+  box-shadow: 0 4px 12px hsla(38, 69%, 8%, 0.2);
+}
+.home__img img{
+  width: 350px;
+  animation: floaty 1.8s infinite alternate;
+}
+.home__img {
+  justify-self: center;
+}
+.home__shadow{
+  width: 130px;
+  height: 24px;
+  background-color: hsla(38, 21%, 19%, 0.16);
+  margin: 0 auto;
+  border-radius: 50%;
+  filter: blur(7px);
+  animation: shadow 1.8s infinite alternate;
+}
+.home__footer{
+  display: flex;
+  justify-content: center;
+  column-gap: 1rem;
+  font-size: var(--smaller-font-size);
+  align-self: flex-end;
+}
+/* Animation */
+@keyframes floaty{
+  0%{
+    transform: translateY(0);
+  }
+  100%{
+    transform: translateY(20px);
+  }
+}
+@keyframes shadow{
+  0%{
+    transform: scale(1,1);
+  }
+  100%{
+    transform: scale(.85, .85);
+  }
+}
+
+/* ======BreakPoints======== */
+/* for Samll devices */
+@media screen and (max-width:320px) {
+  .home{
+    padding-top: 11.2;
+  }
+}
+/* for medium device */
+@media screen and (min-width: 767px) {
+  .nav {
+    height: var(--header-height);
+  }
+  .nav__toggle,
+  .nav__close {
+    display: none;
+  }
+  .nav__list {
+    flex-direction: row;
+    column-gap: 3.5rem;
+  }
+}
+/* For large devices */
+@media screen and (min-width: 1024px) {
+  .home__container {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    column-gap: 2rem;
+  }
+  .home__data {
+    text-align: initial;
+  }
+  .home__img img {
+    width: 400px;
+  }
+  .home__shadow {
+    width: 250px;
+    height: 40px;
+  }
+}
+
+@media screen and (min-width: 1048px) {
+  .container {
+    justify-items: center;
+  }
+}
+/* For 2K resolutions (2048 x 1152, 2048 x 1536) */
+@media screen and (min-width: 2048px) {
+  body {
+    zoom: 1.7;
+  }
+
+  .home {
+    height: initial;
+    row-gap: 4rem;
+  }
+}
+
+/* For 4K resolutions (3840 x 2160, 4096 x 2160) */
+@media screen and (min-width: 3840px) {
+  body {
+    zoom: 3.1;
+  }
+}
